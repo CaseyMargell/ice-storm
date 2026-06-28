@@ -84,8 +84,9 @@ web-ext build   # produces a zip in web-ext-artifacts/
 | `popup.html` / `popup.js` | Toolbar popup: Summon / Dismiss + cameo frequency |
 | `content.js` | Drops the dancer in + runs the glide → dance → glide-off |
 | `content.css` | Icy styling and the speech bubble |
-| `icons/ice.svg` | Toolbar icon |
+| `icons/ice.svg` | Toolbar icon (transparent two-tone flurry) |
 | `assets/ice-dancer.webp` | The dancing clip, background removed |
+| `store/icon-*.png` | AMO listing icons — `icon-128.png` is the store thumbnail |
 
 ## Make him your own
 
