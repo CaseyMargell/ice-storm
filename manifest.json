@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Ice Storm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Summon a dancer to glide across the page, bust a move, and slide off-screen. Click the toolbar icon to trigger an Ice Storm — a whole crew at once.",
   "icons": {
     "48": "icons/ice.svg",
@@ -36,10 +36,13 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "ice-storm@casey.local",
-      "strict_min_version": "115.0",
+      "strict_min_version": "140.0",
       "data_collection_permissions": {
         "required": ["none"]
       }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
     }
   }
 }
