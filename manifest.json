@@ -35,8 +35,9 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "ice-storm@casey.local",
+      "id": "{0eafbbed-9f86-429f-9a1d-f051eb486464}",
       "strict_min_version": "140.0",
+      "update_url": "https://raw.githubusercontent.com/CaseyMargell/ice-storm/main/updates.json",
       "data_collection_permissions": {
         "required": ["none"]
       }
