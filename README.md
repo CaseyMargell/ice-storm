@@ -16,19 +16,23 @@ until you summon him, so CPU stays near zero between dances.
 
 ## Install
 
-Firefox and Firefox-based browsers (like Zen) only permanently install
-**signed** extensions, and this one isn't submitted to Mozilla — so the simplest
-way to run it is as a temporary add-on:
+**Permanent install (recommended).** The release `.xpi` is signed by Mozilla, so
+it installs permanently on Firefox and Firefox-based browsers like Zen — no
+restart cleanup, and it auto-updates.
 
-1. Open `about:debugging#/runtime/this-firefox`.
-2. Click **Load Temporary Add-on…**.
-3. Select the `manifest.json` in this folder (or the `.xpi` from
-   [Releases](../../releases)).
-4. The 🧊 icon appears in the toolbar. Click it on any normal web page → **Summon
-   now**.
+1. Download `ice-storm.xpi` from the [latest release](../../releases/latest).
+2. In Firefox/Zen, open `about:addons`.
+3. Click the gear icon ⚙ → **Install Add-on From File…** and pick the `.xpi`
+   (or just drag the file onto the `about:addons` page).
+4. Approve the permission prompt. The 🧊 icon appears in the toolbar — click it on
+   any normal web page → **Summon now**.
 
-> Temporary add-ons are removed when the browser restarts — just re-load it.
-> For a permanent install you'd need to sign the add-on (see below).
+> Updates are automatic: the add-on points at an update manifest on this repo, so
+> new signed releases roll out to installed copies on their own.
+
+**Temporary install (for development).** To run unsigned local changes without
+reinstalling, use `about:debugging#/runtime/this-firefox` → **Load Temporary
+Add-on…** → pick `manifest.json`. Removed when the browser restarts.
 
 ## Use it
 
@@ -42,18 +46,22 @@ way to run it is as a temporary add-on:
 > Note: a long pending timer (e.g. "Rarely") resets when the browser restarts, so
 > very long intervals may not fire if you restart often — by design, kept simple.
 
-## Permanent install / signing
+## Releasing a new version (maintainers)
 
-Standard Firefox & Zen refuse unsigned `.xpi` files via "Install Add-on From
-File." To install permanently you have two routes:
+Ice Storm is self-distributed: signed by Mozilla but hosted here, not on the AMO
+store. To cut a new version:
 
-- **Disable signature enforcement** — in `about:config` set
-  `xpinstall.signatures.required` to `false`. Only takes effect on Firefox
-  Developer/Nightly/ESR/Unbranded builds; some forks honor it, release builds do
-  not.
-- **Sign via Mozilla** — submit to [addons.mozilla.org](https://addons.mozilla.org/developers/)
-  (a free account; "unlisted" gives you a signed `.xpi` to self-distribute). Note
-  that AMO review expects you to have rights to all bundled assets.
+1. Bump `version` in `manifest.json` and build the `.xpi` (see below).
+2. Submit it at [addons.mozilla.org](https://addons.mozilla.org/developers/) →
+   **Submit a New Version** → **"On your own"** (unlisted). Download the signed
+   `.xpi` it returns.
+3. Publish a GitHub release tagged `vX.Y.Z` with the signed file attached as
+   `ice-storm.xpi`.
+4. Add an entry to [`updates.json`](updates.json) — `version`, the release
+   `update_link`, and `update_hash` (`sha256:` + `sha256sum ice-storm.xpi`).
+
+Installed copies then auto-update via `update_url` in the manifest, which points
+at `updates.json` in this repo.
 
 ## Build the XPI
 
