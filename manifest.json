@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Ice Storm",
+  "version": "1.0.0",
+  "description": "Summon a dancer to glide across the page, bust a move, and slide off-screen. Click the toolbar icon to trigger an Ice Storm — a whole crew at once.",
+  "icons": {
+    "48": "icons/ice.svg",
+    "96": "icons/ice.svg"
+  },
+  "action": {
+    "default_title": "Ice Storm",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/ice.svg",
+      "96": "icons/ice.svg"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["alarms", "storage", "tabs"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/ice-dancer.webp"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ice-storm@casey.local",
+      "strict_min_version": "115.0"
+    }
+  }
+}
