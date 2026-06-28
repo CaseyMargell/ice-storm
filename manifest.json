@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Ice Storm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Summon a dancer to glide across the page, bust a move, and slide off-screen. Click the toolbar icon to trigger an Ice Storm — a whole crew at once.",
   "icons": {
     "48": "icons/ice.svg",
